@@ -14,6 +14,9 @@ BOT_NAME = 'resumespider'
 SPIDER_MODULES = ['resumespider.spiders']
 NEWSPIDER_MODULE = 'resumespider.spiders'
 
+# MongoDB setting
+MONGO_URI = "mongodb://localhost:27017"
+MONGO_DATABASE = "resumespirit"
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'resumespider (+http://www.yourdomain.com)'
@@ -27,13 +30,13 @@ ROBOTSTXT_OBEY = True
 # Configure a delay for requests for the same website (default: 0)
 # See http://scrapy.readthedocs.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-#DOWNLOAD_DELAY = 3
+DOWNLOAD_DELAY = 2
 # The download delay setting will honor only one of:
 #CONCURRENT_REQUESTS_PER_DOMAIN = 16
 #CONCURRENT_REQUESTS_PER_IP = 16
 
 # Disable cookies (enabled by default)
-#COOKIES_ENABLED = False
+COOKIES_ENABLED = False
 
 # Disable Telnet Console (enabled by default)
 #TELNETCONSOLE_ENABLED = False
@@ -52,9 +55,10 @@ ROBOTSTXT_OBEY = True
 
 # Enable or disable downloader middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
-#DOWNLOADER_MIDDLEWARES = {
+DOWNLOADER_MIDDLEWARES = {
 #    'resumespider.middlewares.MyCustomDownloaderMiddleware': 543,
-#}
+     'resumespider.utils.middlewares.RandomUserAgent':100,
+}
 
 # Enable or disable extensions
 # See http://scrapy.readthedocs.org/en/latest/topics/extensions.html
